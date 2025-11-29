@@ -7,10 +7,13 @@ import '../services/supabase_service.dart';
 class AuthBinding extends Bindings {
   @override
   void dependencies() {
-    // Pastikan Supabase service selalu hidup terlebih dahulu
-    Get.lazyPut<SupabaseService>(() => SupabaseService());
+    // SUPABASE SERVICE (singleton)
+    Get.put<SupabaseService>(
+      SupabaseService(),
+      permanent: true, // supaya tidak ke-dispose
+    );
 
-    // Auth Controller
+    // AUTH CONTROLLER
     Get.lazyPut<AuthController>(() => AuthController());
   }
 }

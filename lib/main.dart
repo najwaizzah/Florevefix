@@ -10,6 +10,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'bindings/auth_binding.dart';
 import 'routes/app_router.dart';
 import 'services/hive_boxes.dart';
+import 'services/location_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +35,15 @@ Future<void> main() async {
   HiveBoxes.registerAdapters();
   await Hive.openBox('cartBox');
 
+  // ================================
+  // DEPENDENCY INJECTION GETX
+  // ================================
+  Get.put(LocationService()); // 🌟 penting untuk LocationController
+  Get.put(AuthBinding()); // opsional jika AuthBinding memang pakai GetX
+
+  // ================================
   // RUN APP
+  // ================================
   runApp(const MyApp());
 }
 
@@ -49,7 +58,7 @@ class MyApp extends StatelessWidget {
       title: "Florist Floreve",
       debugShowCheckedModeBanner: false,
 
-      // ⭐ WAJIB ADA BINDING DI SINI ⭐
+      // ⭐ Binding global
       initialBinding: AuthBinding(),
 
       theme: ThemeData(
