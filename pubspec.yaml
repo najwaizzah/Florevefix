@@ -6,44 +6,45 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.10.0 # Pastikan versi ini sesuai dengan Flutter yang Anda gunakan
 
 dependencies:
   flutter:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
+
+  # State Management & Routing
+  get: ^4.7.2
+  go_router: ^17.0.0
+
+  # Local Storage & Database
   supabase_flutter: ^2.10.3
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   path_provider: ^2.1.5
   shared_preferences: ^2.5.3
 
-  get: ^4.7.2
-  go_router: ^17.0.0
-
+  # UI / Utility
   flutter_slidable: ^2.0.0
   flutter_dotenv: ^6.0.0
-
   json_annotation: ^4.9.0
 
-  # GPS + Network Location
+  # --- Dependensi Peta & Lokasi (Sudah Diperbaiki) ---
+
+  # GPS & Location Services
   geolocator: ^13.0.2
-
-  # Permission access (GPS, Location, dll)
   permission_handler: ^11.3.1
-
-  # Live Location realtime stream
   geocoding: ^3.0.0
 
-  # MAP + OpenStreetMap
-  flutter_map: ^7.0.2
+  # MAP (OpenStreetMap)
+  flutter_map: ^8.0.0
   latlong2: ^0.9.1
 
-  # Untuk polyline saat tracking dinamis
-  flutter_map_location_marker: 9.1.1
+  # Live Location Marker - DIUBAH KE VERSI ^10.0.2 (KOMPATIBEL DENGAN flutter_map ^8.0.0)
+  flutter_map_location_marker: ^10.0.2
 
-  # **Tambahkan Google Maps**
+  # Google Maps
   google_maps_flutter: ^2.6.0
 
 dev_dependencies:
@@ -52,9 +53,9 @@ dev_dependencies:
 
   flutter_lints: ^6.0.0
 
+  # Code Generation
   hive_generator: ^2.0.1
   build_runner: ^2.4.11
-
   json_serializable: ^6.8.0
 
 flutter:
@@ -62,29 +63,12 @@ flutter:
 
   assets:
     - .env
+    # Jika Anda memiliki assets lain, tambahkan di sini (misalnya, images):
+    # - assets/
+    # - assets/images/
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
+  # Tambahan konfigurasi font jika ada:
   # fonts:
-  #   - family: Schyler
+  #   - family: YourFontName
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
+  #       - asset: assets/fonts/YourFontFile.ttf
